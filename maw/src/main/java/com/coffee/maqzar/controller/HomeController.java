@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by exrzaragoza on 23/11/2016.
  */
 @Controller
+@RequestMapping("/")
 public class HomeController {
 
-    @RequestMapping("/")
+    @RequestMapping
     public String welcome(Model model){
         model.addAttribute("greeting", "Welcome to MAQZAR!!!");
         model.addAttribute("tagline", "The web application for administration.");

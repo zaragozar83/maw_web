@@ -5,9 +5,11 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+import org.springframework.web.util.UrlPathHelper;
 
 /**
  * Created by exrzaragoza on 23/11/2016.
@@ -30,5 +32,13 @@ public class WebApplicationContextConfig extends WebMvcConfigurerAdapter {
         resolver.setSuffix(".jsp");
 
         return resolver;
+    }
+
+    @Override
+    public void configurePathMatch(PathMatchConfigurer configurer){
+        UrlPathHelper urlPathHelper = new UrlPathHelper();
+        urlPathHelper.setRemoveSemicolonContent(false);
+
+        configurer.setUrlPathHelper(urlPathHelper);
     }
 }

@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="maw:war exploded">
-    <output-path>C:/apache-tomcat-8.0.37/webapps</output-path>
+    <output-path>$PROJECT_DIR$/target/maw-1.0</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -17,6 +17,10 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-web:4.3.1.RELEASE" />
           <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
           <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:3.1.0" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.3.1.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.3.1.RELEASE" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.6" />
+          <element id="library" level="project" name="Maven: com.microsoft:sqljdbc:4" />
         </element>
       </element>
       <element id="directory" name="META-INF">
