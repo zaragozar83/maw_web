@@ -87,4 +87,9 @@ public class ProductServiceImpl implements IProductService {
 
         return productRepository.getProductsByCriterias(category, minPrice, maxPrice, manufacturer);
     }
+
+    @Override
+    public void addProduct(Product product) {
+        productRepository.addProduct(product);
+    }
 }

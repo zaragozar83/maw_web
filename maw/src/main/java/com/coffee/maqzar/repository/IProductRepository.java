@@ -19,4 +19,6 @@ public interface IProductRepository {
     public List<Product> getProductsByCategoryAndPrice(Map<String, List<String>> params);
     public List<Product> getProductsByManufacturerAndPrice(String manufacturer, Long price);
     public List<Product> getProductsByCriterias(String category, BigDecimal minPrice, BigDecimal maxPrice, String manufacturer);
+
+    public void addProduct(Product product);
 }

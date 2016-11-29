@@ -115,6 +115,44 @@ public class ProductRepositoryImpl implements IProductRepository {
         return listProduct;
     }
 
+    @Override
+    public void addProduct(Product product) {
+
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("name", product.getName());
+        params.put("description", product.getDescription());
+        params.put("unitPrice", product.getUnitPrice());
+        params.put("manufacturer", product.getManufacturer());
+        params.put("category", product.getCategory());
+        params.put("condition", product.getCondition());
+        params.put("unitStock", product.getUnitsInStock());
+        params.put("unitOrder", product.getUnitsInOrder());
+        params.put("discontinued", product.isDiscontinued());
+
+        String query = "INSERT INTO SIC_P " +
+                "(NAME," +
+                "DESCRIPTION, " +
+                "UNIT_PRICE, " +
+                "MANUFACTURER, " +
+                "CATEGORY, " +
+                "CONDITION," +
+                "UNITS_IN_STOCK," +
+                "UNITS_IN_ORDER, " +
+                "DISCONTINUED) " +
+                "VALUES (" +
+                ":name, " +
+                ":description," +
+                ":unitPrice," +
+                ":manufacturer," +
+                ":category," +
+                ":condition," +
+                ":unitStock," +
+                ":unitOrder," +
+                ":discontinued)";
+
+        jdbcTemplate.update(query, params);
+    }
+
     private static final class ProductMapper implements RowMapper<Product>{
 
         @Override
@@ -125,8 +163,8 @@ public class ProductRepositoryImpl implements IProductRepository {
             product.setDescription(rs.getString("DESCRIPTION"));
             product.setUnitPrice(rs.getBigDecimal("UNIT_PRICE"));
             product.setManufacturer(rs.getString("MANUFACTURER"));
-            product.setCategory("CATEGORY");
-            product.setCondition("CONDITION");
+            product.setCategory(rs.getString("CATEGORY"));
+            product.setCondition(rs.getString("CONDITION"));
             product.setUnitsInStock(rs.getLong("UNITS_IN_STOCK"));
             product.setUnitsInOrder(rs.getLong("UNITS_IN_ORDER"));
             product.setDiscontinued(rs.getBoolean("DISCONTINUED"));
