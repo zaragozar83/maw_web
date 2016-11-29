@@ -54,8 +54,8 @@
       <file leaf-file-name="ProductController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/coffee/maqzar/controller/ProductController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="74" column="48" selection-start-line="74" selection-start-column="48" selection-end-line="74" selection-end-column="48" />
+            <state relative-caret-position="152">
+              <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#931#940#0" expanded="true" />
@@ -126,14 +126,14 @@
                 <element signature="e#2254#2270#0" expanded="true" />
                 <element signature="e#3024#3040#0" expanded="true" />
                 <element signature="e#3572#3588#0" expanded="true" />
-                <marker date="1480439298484" expanded="true" signature="910:929" ph="SELECT * FRO... SIC_P" />
-                <marker date="1480439298484" expanded="true" signature="1189:1223" ph="SELECT * FRO... SIC_P" />
-                <marker date="1480439298484" expanded="true" signature="1447:1516" ph="UPDATE SIC_P... " />
-                <marker date="1480439298484" expanded="true" signature="1945:1991" ph="SELECT * FRO... SIC_P" />
-                <marker date="1480439298484" expanded="true" signature="2349:2398" ph="SELECT * FRO... SIC_P" />
-                <marker date="1480439298484" expanded="true" signature="2662:2735" ph="SELECT * FRO... SIC_P" />
-                <marker date="1480439298484" expanded="true" signature="3163:3245" ph="SELECT * FRO... SIC_P" />
-                <marker date="1480439298484" expanded="true" signature="3809:3941" ph="SELECT * FRO... SIC_P" />
+                <marker date="1480442881062" expanded="true" signature="910:929" ph="SELECT * FRO... SIC_P" />
+                <marker date="1480442881062" expanded="true" signature="1189:1223" ph="SELECT * FRO... SIC_P" />
+                <marker date="1480442881062" expanded="true" signature="1447:1516" ph="UPDATE SIC_P... " />
+                <marker date="1480442881062" expanded="true" signature="1945:1991" ph="SELECT * FRO... SIC_P" />
+                <marker date="1480442881062" expanded="true" signature="2349:2398" ph="SELECT * FRO... SIC_P" />
+                <marker date="1480442881062" expanded="true" signature="2662:2735" ph="SELECT * FRO... SIC_P" />
+                <marker date="1480442881062" expanded="true" signature="3163:3245" ph="SELECT * FRO... SIC_P" />
+                <marker date="1480442881062" expanded="true" signature="3809:3941" ph="SELECT * FRO... SIC_P" />
               </folding>
             </state>
           </provider>
@@ -191,8 +191,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/coffee/maqzar/service/IProductService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/coffee/maqzar/repository/IProductRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/coffee/maqzar/repository/impl/ProductRepositoryImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/coffee/maqzar/controller/ProductController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/coffee/maqzar/service/impl/ProductServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/coffee/maqzar/controller/ProductController.java" />
       </list>
     </option>
   </component>
@@ -962,12 +962,12 @@
       <workItem from="1479921895359" duration="1695000" />
       <workItem from="1479925535280" duration="7431000" />
       <workItem from="1480009219073" duration="6177000" />
-      <workItem from="1480347403253" duration="31517000" />
+      <workItem from="1480347403253" duration="32615000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46820000" />
+    <option name="totallyTimeSpent" value="47918000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1171,14 +1171,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/welcome.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/webapp/WEB-INF/views/welcome.jsp" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.1.RELEASE/spring-webmvc-4.3.1.RELEASE.jar!/org/springframework/web/servlet/support/AbstractAnnotationConfigDispatcherServletInitializer.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -1374,10 +1366,10 @@
             <element signature="e#1086#1102#0" expanded="true" />
             <element signature="e#1436#1452#0" expanded="true" />
             <element signature="e#1814#1830#0" expanded="true" />
-            <marker date="1480381275369" expanded="true" signature="839:858" ph="SELECT * FRO... SIC_U" />
-            <marker date="1480381275369" expanded="true" signature="1165:1199" ph="SELECT * FRO... SIC_U" />
-            <marker date="1480381275369" expanded="true" signature="1531:1581" ph="SELECT * FRO... SIC_U" />
-            <marker date="1480381275369" expanded="true" signature="1901:1942" ph="SELECT * FRO... SIC_U" />
+            <marker date="1480442881064" expanded="true" signature="839:858" ph="SELECT * FRO... SIC_U" />
+            <marker date="1480442881064" expanded="true" signature="1165:1199" ph="SELECT * FRO... SIC_U" />
+            <marker date="1480442881064" expanded="true" signature="1531:1581" ph="SELECT * FRO... SIC_U" />
+            <marker date="1480442881064" expanded="true" signature="1901:1942" ph="SELECT * FRO... SIC_U" />
           </folding>
         </state>
       </provider>
@@ -1475,22 +1467,30 @@
             <element signature="e#2254#2270#0" expanded="true" />
             <element signature="e#3024#3040#0" expanded="true" />
             <element signature="e#3572#3588#0" expanded="true" />
-            <marker date="1480439298484" expanded="true" signature="910:929" ph="SELECT * FRO... SIC_P" />
-            <marker date="1480439298484" expanded="true" signature="1189:1223" ph="SELECT * FRO... SIC_P" />
-            <marker date="1480439298484" expanded="true" signature="1447:1516" ph="UPDATE SIC_P... " />
-            <marker date="1480439298484" expanded="true" signature="1945:1991" ph="SELECT * FRO... SIC_P" />
-            <marker date="1480439298484" expanded="true" signature="2349:2398" ph="SELECT * FRO... SIC_P" />
-            <marker date="1480439298484" expanded="true" signature="2662:2735" ph="SELECT * FRO... SIC_P" />
-            <marker date="1480439298484" expanded="true" signature="3163:3245" ph="SELECT * FRO... SIC_P" />
-            <marker date="1480439298484" expanded="true" signature="3809:3941" ph="SELECT * FRO... SIC_P" />
+            <marker date="1480442881062" expanded="true" signature="910:929" ph="SELECT * FRO... SIC_P" />
+            <marker date="1480442881062" expanded="true" signature="1189:1223" ph="SELECT * FRO... SIC_P" />
+            <marker date="1480442881062" expanded="true" signature="1447:1516" ph="UPDATE SIC_P... " />
+            <marker date="1480442881062" expanded="true" signature="1945:1991" ph="SELECT * FRO... SIC_P" />
+            <marker date="1480442881062" expanded="true" signature="2349:2398" ph="SELECT * FRO... SIC_P" />
+            <marker date="1480442881062" expanded="true" signature="2662:2735" ph="SELECT * FRO... SIC_P" />
+            <marker date="1480442881062" expanded="true" signature="3163:3245" ph="SELECT * FRO... SIC_P" />
+            <marker date="1480442881062" expanded="true" signature="3809:3941" ph="SELECT * FRO... SIC_P" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/welcome.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/coffee/maqzar/controller/ProductController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="74" column="48" selection-start-line="74" selection-start-column="48" selection-end-line="74" selection-end-column="48" />
+        <state relative-caret-position="152">
+          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#931#940#0" expanded="true" />
