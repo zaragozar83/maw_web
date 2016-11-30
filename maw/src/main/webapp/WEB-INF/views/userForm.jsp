@@ -19,12 +19,12 @@
 <section class="container">
     <form:form  method="POST" modelAttribute="newUser" class="form-horizontal">
         <fieldset>
-            <legend>Add new User</legend>
+            <legend><spring:message code="form.user.legend.lbl.addUser"/></legend>
 
             <!-- Name -->
             <div class="form-group">
                 <label class="control-label col-lg-2 col-lg-2" for="name">
-                    Name
+                    <spring:message code="form.user.lbl.name"/>
                 </label>
                 <div class="col-lg-10">
                     <form:input id="name" path="name" type="text" class="form:input-large"/>
@@ -34,7 +34,7 @@
             <!-- lastName -->
             <div class="form-group">
                 <label class="control-label col-lg-2" for="lastName">
-                    LastName
+                    <spring:message code="form.user.lbl.lastName"/>
                 </label>
                 <div class="col-lg-10">
                     <form:input id="lastName" path="lastName" type="text" class="form:input-large"/>
@@ -44,7 +44,7 @@
             <!-- middleName -->
             <div class="form-group">
                 <label class="control-label col-lg-2 col-lg-2" for="middleName">
-                    MiddleName
+                    <spring:message code="form.user.lbl.middleName"/>
                 </label>
                 <div class="col-lg-10">
                     <form:input id="middleName" path="middleName" type="text" class="form:input-large"/>
@@ -54,7 +54,7 @@
             <!-- age -->
             <div class="form-group">
                 <label class="control-label col-lg-2 col-lg-2" for="age">
-                    Age
+                    <spring:message code="form.user.lbl.age"/>
                 </label>
                 <div class="col-lg-10">
                     <form:input maxlength="2" id="age" path="age" type="text" class="form:input-large"/>
@@ -64,7 +64,7 @@
             <!-- active -->
             <div class="form-group">
                 <label class="control-label col-lg-2" for="active">
-                    Active
+                    <spring:message code="form.user.lbl.active"/>
                 </label>
                 <div class="col-lg-10">
                     <form:checkbox  id="active" path="active"/>

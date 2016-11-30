@@ -19,22 +19,12 @@
 <section class="container">
     <form:form  method="POST" modelAttribute="newProduct" class="form-horizontal">
         <fieldset>
-            <legend>Add new product</legend>
-
-            <!-- We don't add the Id, it is random in the database -->
-            <!--div class="form-group">
-                <label class="control-label col-lg-2 col-lg-2" for="productId">
-                    Product Id
-                </label>
-                <div class="col-lg-10">
-                    <form:input id="productId" path="productId" type="text" class="form:input-large"/>
-                </div>
-            </div-->
+            <legend><spring:message code="form.product.legend.lbl.addProduct"/> </legend>
 
             <!-- Name -->
             <div class="form-group">
                 <label class="control-label col-lg-2 col-lg-2" for="name">
-                    Name
+                    <spring:message code="form.product.lbl.name"/>
                 </label>
                 <div class="col-lg-10">
                     <form:input id="name" path="name" type="text" class="form:input-large"/>
@@ -44,7 +34,7 @@
             <!-- Description -->
             <div class="form-group">
                 <label class="control-label col-lg-2" for="description">
-                    Description
+                    <spring:message code="form.product.lbl.description"/>
                 </label>
                 <div class="col-lg-10">
                     <form:textarea id="description" path="description" rows = "2"/>
@@ -54,7 +44,7 @@
             <!-- unitPrice -->
             <div class="form-group">
                 <label class="control-label col-lg-2 col-lg-2" for="unitPrice">
-                    Price
+                    <spring:message code="form.product.lbl.price"/>
                 </label>
                 <div class="col-lg-10">
                     <form:input id="unitPrice" path="unitPrice" type="text" class="form:input-large"/>
@@ -64,7 +54,7 @@
             <!-- manufacturer -->
             <div class="form-group">
                 <label class="control-label col-lg-2 col-lg-2" for="manufacturer">
-                    Manufacturer
+                    <spring:message code="form.product.lbl.manufacturer"/>
                 </label>
                 <div class="col-lg-10">
                     <form:input id="manufacturer" path="manufacturer" type="text" class="form:input-large"/>
@@ -74,7 +64,7 @@
             <!-- category -->
             <div class="form-group">
                 <label class="control-label col-lg-2 col-lg-2" for="category">
-                    Category
+                    <spring:message code="form.product.lbl.category"/>
                 </label>
                 <div class="col-lg-10">
                     <form:input id="category" path="category" type="text" class="form:input-large"/>
@@ -84,7 +74,7 @@
             <!-- unitsInStock -->
             <div class="form-group">
                 <label class="control-label col-lg-2 col-lg-2" for="unitsInStock">
-                    Units Stock
+                    <spring:message code="form.product.lbl.unitsInStock"/>
                 </label>
                 <div class="col-lg-10">
                     <form:input id="unitsInStock" path="unitsInStock" type="text" class="form:input-large"/>
@@ -92,9 +82,9 @@
             </div>
 
             <!-- unitsInOrder -->
-            <div class="form-group">
+            <!--div class="form-group">
                 <label class="control-label col-lg-2 col-lg-2" for="unitsInOrder">
-                    Units Order
+                    <spring:message code="form.product.lbl.unitsInOrder"/>
                 </label>
                 <div class="col-lg-10">
                     <form:input id="unitsInOrder" path="unitsInOrder" type="text" class="form:input-large"/>
@@ -103,21 +93,21 @@
 
             <div class="form-group">
                 <label class="control-label col-lg-2" for="discontinued">
-                    Discontinued
+                    <spring:message code="form.product.lbl.discontinued"/>
                 </label>
                 <div class="col-lg-10">
                     <form:checkbox  id="discontinued" path="discontinued"/>
                 </div>
-            </div>
+            </div-->
 
             <div class="form-group">
                 <label class="control-label col-lg-2" for="condition">
-                    Condition
+                    <spring:message code="form.product.lbl.condition"/>
                 </label>
-                <div class="col-lg-10">
-                    <form:radiobutton path="condition" value="New" />New
-                    <form:radiobutton path="condition" value="Old" />Old
-                    <form:radiobutton path="condition" value="Refurbished" />Refurbished
+                <div class="col-lg-10" style="display:list-item">
+                    <form:radiobutton path="condition" value="New" /><spring:message code="form.product.lbl.condition.new"/>
+                    <form:radiobutton path="condition" value="Old" /><spring:message code="form.product.lbl.condition.old"/>
+                    <form:radiobutton path="condition" value="Refurbished" /><spring:message code="form.product.lbl.condition.refurbished"/>
                 </div>
             </div>
 

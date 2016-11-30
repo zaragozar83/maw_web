@@ -20,5 +20,5 @@ public interface IProductService {
     public List<Product> getProductsByManufacturerAndPrice(String manufacturer, Long price);
     public List<Product> getProductsByCriterias(String category, Map<String, List<String>> filterPrice, String manufacturer);
 
-    public void addProduct(Product product);
+    public int addProduct(Product product);
 }

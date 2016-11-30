@@ -89,7 +89,7 @@ public class ProductServiceImpl implements IProductService {
     }
 
     @Override
-    public void addProduct(Product product) {
-        productRepository.addProduct(product);
+    public int addProduct(Product product) {
+        return productRepository.addProduct(product);
     }
 }

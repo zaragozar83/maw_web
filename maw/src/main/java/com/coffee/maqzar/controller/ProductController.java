@@ -31,6 +31,7 @@ public class ProductController {
         return "products";
     }
 
+
     @RequestMapping("/update/stock")
     public String updateStock(Model model){
         productService.updateAllProducts();
@@ -84,7 +85,7 @@ public class ProductController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String processAddProduct(@ModelAttribute("newProduct")Product product){
-        productService.addProduct(product);
+        int idProduct = productService.addProduct(product);
         return "redirect:/products";
     }
 }

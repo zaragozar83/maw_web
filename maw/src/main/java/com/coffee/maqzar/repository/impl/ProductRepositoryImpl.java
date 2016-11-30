@@ -5,9 +5,13 @@ import com.coffee.maqzar.repository.IProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -116,7 +120,7 @@ public class ProductRepositoryImpl implements IProductRepository {
     }
 
     @Override
-    public void addProduct(Product product) {
+    public int addProduct(Product product) {
 
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("name", product.getName());
@@ -151,6 +155,12 @@ public class ProductRepositoryImpl implements IProductRepository {
                 ":discontinued)";
 
         jdbcTemplate.update(query, params);
+
+        String queryLastId = "SELECT TOP 1 ID FROM SIC_P ORDER BY ID DESC";
+
+        int lastIdProduct = jdbcTemplate.queryForObject(query, params, Integer.class);
+
+        return lastIdProduct;
     }
 
     private static final class ProductMapper implements RowMapper<Product>{
