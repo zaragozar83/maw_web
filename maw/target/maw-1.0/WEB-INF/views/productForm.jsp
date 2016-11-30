@@ -21,14 +21,15 @@
         <fieldset>
             <legend>Add new product</legend>
 
-            <div class="form-group">
+            <!-- We don't add the Id, it is random in the database -->
+            <!--div class="form-group">
                 <label class="control-label col-lg-2 col-lg-2" for="productId">
                     Product Id
                 </label>
                 <div class="col-lg-10">
                     <form:input id="productId" path="productId" type="text" class="form:input-large"/>
                 </div>
-            </div>
+            </div-->
 
             <!-- Name -->
             <div class="form-group">

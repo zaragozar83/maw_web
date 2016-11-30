@@ -13,4 +13,5 @@ public interface IUserService {
     public User findUserById(Long userId);
     public List<User> findUserByLastName(String lastName);
     public List<User> findUserByName(String name);
+    public void addUser(User user);
 }

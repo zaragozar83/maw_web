@@ -68,6 +68,20 @@ public class UserRepositoryImpl implements IUserRepository {
         return listUser;
     }
 
+    @Override
+    public void addUser(User user) {
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("name", user.getName());
+        params.put("lastName", user.getLastName());
+        params.put("middleName", user.getMiddleName());
+        params.put("age", user.getAge());
+        params.put("active", user.getActive());
+
+        String query = "INSERT INTO SIC_U (NAME,LAST_NAME, MIDDLE_NAME, AGE, ACTIVE) VALUES (:name, :lastName, :middleName, :age, :active)";
+
+        jdbcTemplate.update(query, params);
+    }
+
     private static final class UserMapper implements RowMapper<User>{
 
         @Override

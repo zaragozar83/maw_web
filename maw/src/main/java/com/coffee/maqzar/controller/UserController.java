@@ -6,8 +6,7 @@ import com.coffee.maqzar.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,5 +40,24 @@ public class UserController {
     public String showUsersByName(Model model, @PathVariable("name")String name){
         model.addAttribute("users", userService.findUserByName(name));
         return "users";
+    }
+
+    @RequestMapping("/user")
+    public String showUserById(Model model, @RequestParam("id")String idUser){
+        Long id = Long.valueOf(idUser);
+        model.addAttribute("user", userService.findUserById(id));
+        return "userDetail";
+    }
+
+    @RequestMapping(value = "/addUser", method = RequestMethod.GET)
+    public String addUserForm (Model model){
+        model.addAttribute("newUser", new User());
+        return "userForm";
+    }
+
+    @RequestMapping(value = "/addUser", method = RequestMethod.POST)
+    public String processAddUserForm(@ModelAttribute("newUser")User user){
+        userService.addUser(user);
+        return "redirect:/users";
     }
 }
