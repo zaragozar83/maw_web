@@ -91,25 +91,13 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String processAddProduct(@ModelAttribute("newProduct")Product product, HttpServletRequest request) throws MalformedURLException {
+    public String processAddProduct(@ModelAttribute("newProduct")Product product, HttpServletRequest request) {
 
         int idProduct = productService.addProduct(product);
 
         MultipartFile productImage = product.getProductImage();
 
         String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-
-        String directory = request.getSession().getServletContext().getContextPath();
-        System.out.println("directory: " + directory);
-
-        URL url = request.getSession().getServletContext().getResource("/");
-
-        try {
-            String decode = URLDecoder.decode(url.getFile(), "UTF-8");
-            System.out.println("decode: " + decode);
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
 
         if(productImage != null
                 && !productImage.isEmpty()){
