@@ -17,7 +17,7 @@
     </div>
 </section>
 <section class="container">
-    <form:form  method="POST" modelAttribute="newProduct" class="form-horizontal">
+    <form:form  method="POST" modelAttribute="newProduct" class="form-horizontal" enctype="multipart/form-data">
         <fieldset>
             <legend><spring:message code="form.product.legend.lbl.addProduct"/> </legend>
 
@@ -108,6 +108,15 @@
                     <form:radiobutton path="condition" value="New" /><spring:message code="form.product.lbl.condition.new"/>
                     <form:radiobutton path="condition" value="Old" /><spring:message code="form.product.lbl.condition.old"/>
                     <form:radiobutton path="condition" value="Refurbished" /><spring:message code="form.product.lbl.condition.refurbished"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-lg-2" for="productImage">
+                    <spring:message code="form.product.lbl.productImage"/>
+                </label>
+                <div class="col-lg-10">
+                    <form:input id="productImage" path="productImage" type="file" class="form:input-large"/>
                 </div>
             </div>
 

@@ -158,7 +158,9 @@ public class ProductRepositoryImpl implements IProductRepository {
 
         String queryLastId = "SELECT TOP 1 ID FROM SIC_P ORDER BY ID DESC";
 
-        int lastIdProduct = jdbcTemplate.queryForObject(query, params, Integer.class);
+        Map<String, Object> params2 = new HashMap<String, Object>();
+
+        int lastIdProduct = jdbcTemplate.queryForObject(queryLastId, params2, Integer.class);
 
         return lastIdProduct;
     }

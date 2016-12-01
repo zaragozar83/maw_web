@@ -6,8 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -84,8 +91,35 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String processAddProduct(@ModelAttribute("newProduct")Product product){
+    public String processAddProduct(@ModelAttribute("newProduct")Product product, HttpServletRequest request) throws MalformedURLException {
+
         int idProduct = productService.addProduct(product);
+
+        MultipartFile productImage = product.getProductImage();
+
+        String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+
+        String directory = request.getSession().getServletContext().getContextPath();
+        System.out.println("directory: " + directory);
+
+        URL url = request.getSession().getServletContext().getResource("/");
+
+        try {
+            String decode = URLDecoder.decode(url.getFile(), "UTF-8");
+            System.out.println("decode: " + decode);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        if(productImage != null
+                && !productImage.isEmpty()){
+            try{
+                productImage.transferTo(new File(rootDirectory+"resources\\images\\"+idProduct+".png"));
+            }catch(Exception e){
+                throw new RuntimeException("Product Image saving failed", e);
+            }
+        }
+
         return "redirect:/products";
     }
 }
