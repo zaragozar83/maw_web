@@ -10,7 +10,7 @@
 <body>
 <section>
     <div class="pull-right" style="padding-right:50px">
-        <a href="?language=es" ><spring:message code="general.lbl.es"/></a>|<a href="?language=en"><spring:message code="general.lbl.en"/></a>
+        <a href="<spring:url value="?id=${user.userId}&language=es"/>" ><spring:message code="general.lbl.es"/></a>|<a href="<spring:url value="?id=${user.userId}&language=en"/>"><spring:message code="general.lbl.en"/></a>
     </div>
 </section>
 <section>
