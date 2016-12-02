@@ -1,8 +1,10 @@
 package com.coffee.maqzar.repository.impl;
 
 import com.coffee.maqzar.domain.Product;
+import com.coffee.maqzar.exception.ProductNotFoundException;
 import com.coffee.maqzar.repository.IProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -14,6 +16,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,9 +34,15 @@ public class ProductRepositoryImpl implements IProductRepository {
     public List<Product> getProducts() {
         Map<String, Object> params = new HashMap<String, Object>();
 
-        List<Product> result = jdbcTemplate.query("SELECT * FROM SIC_P", params, new ProductMapper());
+        List<Product> result = new ArrayList<Product>();
 
-        return result;
+        try{
+            result = processListProducts(jdbcTemplate.query("SELECT * FROM SIC_P", params, new ProductMapper()));
+
+            return result;
+        }catch (DataAccessException e) {
+            throw new ProductNotFoundException();
+        }
     }
 
     @Override
@@ -43,8 +52,17 @@ public class ProductRepositoryImpl implements IProductRepository {
 
         String query = "SELECT * FROM SIC_P WHERE ID = :id";
 
-        Product product = jdbcTemplate.queryForObject(query, params, new ProductMapper());
-        return product;
+        try{
+            Product product = jdbcTemplate.queryForObject(query, params, new ProductMapper());
+
+            if(product == null){
+                throw new ProductNotFoundException();
+            }
+
+            return product;
+        }catch(DataAccessException e){
+            throw new ProductNotFoundException(productId.toString());
+        }
     }
 
     @Override
@@ -66,8 +84,15 @@ public class ProductRepositoryImpl implements IProductRepository {
 
         String query = "SELECT * FROM SIC_P WHERE CATEGORY = :category";
 
-        List<Product> listProduct = jdbcTemplate.query(query, params, new ProductMapper());
-        return listProduct;
+        List<Product> listProduct = new ArrayList<Product>();
+
+        try{
+            listProduct = processListProducts(jdbcTemplate.query(query, params, new ProductMapper()));
+
+            return listProduct;
+        }catch(DataAccessException e){
+            throw new ProductNotFoundException();
+        }
     }
 
     @Override
@@ -77,9 +102,16 @@ public class ProductRepositoryImpl implements IProductRepository {
 
         String query = "SELECT * FROM SIC_P WHERE CATEGORY like :category";
 
-        List<Product> listProducts = jdbcTemplate.query(query, params, new ProductMapper());
+        List<Product> listProducts = new ArrayList<Product>();
 
-        return listProducts;
+        try{
+
+            listProducts = processListProducts(jdbcTemplate.query(query, params, new ProductMapper()));
+            return listProducts;
+
+        }catch(DataAccessException e){
+            throw new ProductNotFoundException();
+        }
     }
 
     @Override
@@ -87,8 +119,14 @@ public class ProductRepositoryImpl implements IProductRepository {
 
         String query = "SELECT * FROM SIC_P WHERE category in(:category) AND UNIT_PRICE <= :price";
 
-        List<Product> listProducts = jdbcTemplate.query(query, params, new ProductMapper());
-        return listProducts;
+        List<Product> listProducts = new ArrayList<Product>();
+
+        try{
+            listProducts = processListProducts(jdbcTemplate.query(query, params, new ProductMapper()));
+            return listProducts;
+        }catch(DataAccessException e){
+            throw new ProductNotFoundException();
+        }
     }
 
     @Override
@@ -99,9 +137,13 @@ public class ProductRepositoryImpl implements IProductRepository {
 
         String query = "SELECT * FROM SIC_P WHERE MANUFACTURER like :manufacturer AND UNIT_PRICE <= :price";
 
-        List<Product> listProducts = jdbcTemplate.query(query, params, new ProductMapper());
-
-        return listProducts;
+        List<Product> listProducts = new ArrayList<Product>();
+        try{
+            listProducts = processListProducts(jdbcTemplate.query(query, params, new ProductMapper()));
+            return listProducts;
+        }catch(DataAccessException e){
+            throw new ProductNotFoundException();
+        }
     }
 
     @Override
@@ -115,8 +157,13 @@ public class ProductRepositoryImpl implements IProductRepository {
 
         String query = "SELECT * FROM SIC_P WHERE CATEGORY like :category AND UNIT_PRICE BETWEEN :minPrice AND :maxPrice AND MANUFACTURER like :manufacturer";
 
-        List<Product> listProduct = jdbcTemplate.query(query, params, new ProductMapper());
-        return listProduct;
+        List<Product> listProduct = new ArrayList<Product>();
+        try{
+            listProduct = processListProducts(jdbcTemplate.query(query, params, new ProductMapper()));
+            return listProduct;
+        }catch (DataAccessException e){
+            throw new ProductNotFoundException();
+        }
     }
 
     @Override
@@ -163,6 +210,14 @@ public class ProductRepositoryImpl implements IProductRepository {
         int lastIdProduct = jdbcTemplate.queryForObject(queryLastId, params2, Integer.class);
 
         return lastIdProduct;
+    }
+
+    private List<Product> processListProducts(List<Product> listProducts){
+        if(listProducts == null
+                || listProducts.isEmpty()){
+            throw new ProductNotFoundException();
+        }
+        return listProducts;
     }
 
     private static final class ProductMapper implements RowMapper<Product>{

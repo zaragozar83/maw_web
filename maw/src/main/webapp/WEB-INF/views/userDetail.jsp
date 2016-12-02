@@ -3,15 +3,20 @@
 
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <title>Users</title>
 </head>
 <body>
 <section>
+    <div class="pull-right" style="padding-right:50px">
+        <a href="?language=es" ><spring:message code="general.lbl.es"/></a>|<a href="?language=en"><spring:message code="general.lbl.en"/></a>
+    </div>
+</section>
+<section>
     <div class="jumbotron">
         <div class="container">
-            <h1>Users</h1>
+            <h1><spring:message code="form.user.lbl.users"/> </h1>
         </div>
     </div>
 </section>

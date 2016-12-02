@@ -1,13 +1,17 @@
 package com.coffee.maqzar.domain;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
  * Created by exrzaragoza on 24/11/2016.
  */
+@XmlRootElement
 public class Product implements Serializable {
 
     private static final long serialVersionUID =
@@ -23,6 +27,8 @@ public class Product implements Serializable {
     private long unitsInOrder;
     private boolean discontinued;
     private String condition;
+
+    @JsonIgnore
     private MultipartFile productImage;
 
     public Product(){
@@ -151,6 +157,7 @@ public class Product implements Serializable {
         this.condition = condition;
     }
 
+    @XmlTransient
     public MultipartFile getProductImage() {
         return productImage;
     }

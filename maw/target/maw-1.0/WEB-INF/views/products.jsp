@@ -2,16 +2,21 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-    <title>Products</title>
+    <title><spring:message code="general.lbl.products"/> </title>
 </head>
 <body>
 <section>
+    <div class="pull-right" style="padding-right:50px">
+        <a href="?language=es" ><spring:message code="general.lbl.es"/></a>|<a href="?language=en"><spring:message code="general.lbl.en"/></a>
+    </div>
+</section>
+<section>
     <div class="jumbotron">
         <div class="container">
-            <h1>Products</h1>
-            <p>All the available products in our store</p>
+            <h1><spring:message code="general.lbl.products"/> </h1>
+            <p><spring:message code="general.lbl.products.title"/> </p>
         </div>
     </div>
 </section>
@@ -26,10 +31,10 @@
                         <h3>${product.name}</h3>
                         <p>${product.description}</p>
                         <p>$${product.unitPrice}</p>
-                        <p>Available ${product.unitsInStock} units in stock</p>
+                        <p><spring:message code="form.product.lbl.unitedAvailable"/> ${product.unitsInStock}</p>
                         <p>
                             <a href=" <spring:url value="/products/product?id=${product.productId}" htmlEscape="true"/> " class="btn btn-primary">
-                                <span class="glyphicon-info-sign glyphicon"/></span> Details
+                                <span class="glyphicon-info-sign glyphicon"/></span> <spring:message code="form.product.lbl.details"/>
                             </a>
                         </p>
                     </div>

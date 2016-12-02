@@ -1,6 +1,8 @@
 package com.coffee.maqzar.controller;
 
 import com.coffee.maqzar.domain.Product;
+import com.coffee.maqzar.exception.NoProductsFoundUnderCategoryException;
+import com.coffee.maqzar.exception.ProductNotFoundException;
 import com.coffee.maqzar.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,7 +50,15 @@ public class ProductController {
 
     @RequestMapping("/{category}")
     public String showProductsByCategory(Model model, @PathVariable("category") String category){
-        model.addAttribute("products", productService.getProductsByCategoryLike(category));
+        List<Product> products = new ArrayList<Product>();
+
+        products = productService.getProductsByCategoryLike(category);
+
+        if(products == null
+                || products.isEmpty()){
+            throw new NoProductsFoundUnderCategoryException();
+        }
+        model.addAttribute("products", products);
         return "products";
     }
 
@@ -109,5 +119,19 @@ public class ProductController {
         }
 
         return "redirect:/products";
+    }
+
+    @ExceptionHandler(ProductNotFoundException.class)
+    public String handlerErrorPage(Model model, HttpServletRequest request, ProductNotFoundException exception){
+
+        if(exception != null
+                && exception.getProductId() != null
+                && !exception.getProductId().isEmpty()){
+            model.addAttribute("invalidProductId", " con el Id: "+exception.getProductId());
+        }
+        model.addAttribute("exception", exception);
+        model.addAttribute("url", request.getRequestURI()+"?"+request.getQueryString());
+
+        return "productNotFound";
     }
 }
