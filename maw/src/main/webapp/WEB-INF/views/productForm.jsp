@@ -10,6 +10,9 @@
 <body>
 <section>
     <div class="pull-right" style="padding-right:50px">
+        <a href="<spring:url value="/products"/>" class="btn btn-default">
+            <span class="glyphicon-hand-left glyphicon"></span><spring:message code="general.lbl.products"/>
+        </a>
         <a href="?language=es" ><spring:message code="general.lbl.es"/> </a>|<a href="?language=en"><spring:message code="general.lbl.en"/></a>
         <a href="<c:url value="/logout" />"><spring:message code="general.lbl.logoutSystem"/> </a>
     </div>

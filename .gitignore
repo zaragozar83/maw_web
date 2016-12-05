@@ -3,6 +3,9 @@
 /.project
 /.idea
 /target
+/maw/target
+*/maw/target
+maw/target
 /.idea/
 .idea/workspace.xml
 maw/.idea/workspace.xml

@@ -15,6 +15,9 @@
 <section>
     <div class="jumbotron">
         <div class="container">
+            <a href="<spring:url value="/products/add"/>" class="btn btn-default">
+                <span class="glyphicon glyphicon-plus"></span><spring:message code="form.product.legend.lbl.addProduct"/>
+            </a>
             <h1><spring:message code="general.lbl.products"/> </h1>
             <p><spring:message code="general.lbl.products.title"/> </p>
         </div>

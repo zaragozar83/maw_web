@@ -25,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         httpSecurity.formLogin().loginPage("/login").usernameParameter("userId").passwordParameter("password");
 
-        httpSecurity.formLogin().defaultSuccessUrl("/market/products/add").failureUrl("/login?error");
+        httpSecurity.formLogin().defaultSuccessUrl("/products").failureUrl("/login?error");
 
         httpSecurity.logout().logoutSuccessUrl("/login?logout");
 
@@ -34,8 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/**/add").access("hasRole('ADMIN')")
-                .antMatchers("/**/products/**").access
-                ("hasRole('USER')");
+                .antMatchers("/**/products/**").access("hasRole('USER')");
 
         httpSecurity.csrf().disable();
     }

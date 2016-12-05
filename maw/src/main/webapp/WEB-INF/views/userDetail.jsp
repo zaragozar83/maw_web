@@ -42,7 +42,7 @@
             </p>
             <p>
                 <a href="<spring:url value="/users"/>" class="btn btn-default">
-                    <span class="glyphicon-hand-left glyphicon"></span>back
+                    <span class="glyphicon-hand-left glyphicon"></span>Back
                 </a>
             </p>
         </div>
