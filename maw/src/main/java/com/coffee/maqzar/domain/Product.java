@@ -3,6 +3,8 @@ package com.coffee.maqzar.domain;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
@@ -18,6 +20,9 @@ public class Product implements Serializable {
             3678107792576131001L;
 
     private Long productId;
+
+    //@Size(min = 4, max = 50, message = "{product.validation.size.name}")
+    //@NotNull(message = "{product.validation.notNull.name}")
     private String name;
     private BigDecimal unitPrice;
     private String description;

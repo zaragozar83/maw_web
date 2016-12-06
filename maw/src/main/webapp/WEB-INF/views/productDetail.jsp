@@ -10,6 +10,7 @@
 <body>
 <section>
         <div class="pull-right" style="padding-right:50px">
+            <a href="<c:url value="/logout" />">Logout</a>
             <a href="<spring:url value="?id=${product.productId}&language=es"/>" ><spring:message code="general.lbl.es"/></a>|<a href="<spring:url value="?id=${product.productId}&language=en"/>"><spring:message code="general.lbl.en"/></a>
         </div>
 </section>

@@ -4,6 +4,7 @@ import com.coffee.maqzar.domain.Product;
 import com.coffee.maqzar.exception.NoProductsFoundUnderCategoryException;
 import com.coffee.maqzar.exception.ProductNotFoundException;
 import com.coffee.maqzar.service.IProductService;
+import com.coffee.maqzar.validator.UnitsInStockValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
@@ -30,6 +32,9 @@ public class ProductController {
 
     @Autowired
     private IProductService productService;
+
+    @Autowired
+    private UnitsInStockValidator unitsInStockValidator;
 
     @RequestMapping
     public String showProducts(Model model){
@@ -101,7 +106,7 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String processAddProduct(@ModelAttribute("newProduct")Product product, HttpServletRequest request) {
+    public String processAddProduct(@ModelAttribute("newProduct") Product product, HttpServletRequest request) {
 
         int idProduct = productService.addProduct(product);
 
