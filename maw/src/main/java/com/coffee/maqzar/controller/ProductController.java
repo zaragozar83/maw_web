@@ -4,7 +4,6 @@ import com.coffee.maqzar.domain.Product;
 import com.coffee.maqzar.exception.NoProductsFoundUnderCategoryException;
 import com.coffee.maqzar.exception.ProductNotFoundException;
 import com.coffee.maqzar.service.IProductService;
-import com.coffee.maqzar.validator.UnitsInStockValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,13 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 import java.io.File;
-import java.io.UnsupportedEncodingException;
-import java.math.BigDecimal;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -32,9 +25,6 @@ public class ProductController {
 
     @Autowired
     private IProductService productService;
-
-    @Autowired
-    private UnitsInStockValidator unitsInStockValidator;
 
     @RequestMapping
     public String showProducts(Model model){
