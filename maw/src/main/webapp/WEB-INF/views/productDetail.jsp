@@ -5,6 +5,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <script src="/maw/resources/js/angular.1.5.js"></script>
+    <script src="/maw/resources/js/controller.js"></script>
     <title>Products</title>
 </head>
 <body>
@@ -21,7 +23,7 @@
         </div>
     </div>
 </section>
-<section class="container">
+<section class="container" ng-app="cartApp">
     <div class="row">
         <div class="col-md-5">
             <img src="<c:url value="/img/${product.productId}.png"/>" alt="image"  style = "width:100%"/>
@@ -44,12 +46,15 @@
                 <strong><spring:message code="form.product.lbl.unitedAvailable"/> </strong> : ${product.unitsInStock}
             </p>
             <h4>${product.unitPrice} USD</h4>
-            <p>
+            <p ng-controller="cartCtrl1">
                 <a href="<spring:url value="/products"/>" class="btn btn-default">
                     <span class="glyphicon-hand-left glyphicon"></span><spring:message code="form.product.lbl.back"/>
                 </a>
-                <a href="#" class="btn btn-warning btn-large">
+                <a href="#" class="btn btn-warning btn-large" ng-click="addToCart('${product.productId}')">
                     <span class="glyphicon-shopping-cart glyphicon">          </span> <spring:message code="form.product.lbl.orderNow"/>
+                </a>
+                <a href="<spring:url value="/cart" />" class="btn btn-default">
+                    <span class="glyphicon-hand-right glyphicon"></span> View Cart
                 </a>
             </p>
         </div>

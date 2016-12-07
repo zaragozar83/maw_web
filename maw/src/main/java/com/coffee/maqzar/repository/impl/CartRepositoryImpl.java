@@ -97,39 +97,55 @@ public class CartRepositoryImpl implements ICartRepository {
     }
 
     @Override
-    public void addItem(Long cartId, Long productId) {
+    public int getLastIdCart(){
+        int lastId = 1;
+
+        Map<String, Object> params = new HashMap<String, Object>();
+
+        String query = "SELECT MAX(ID) FROM C";
+
+
+        lastId = jdbcTempleate.queryForObject(query, params, Integer.class);
+
+        return lastId;
+    }
+
+    @Override
+    public void addItem(Long productId) {
 
         String query=null;
         Cart cart = null;
 
-        cart = read(cartId);
-        if(cart ==null) {
-            CartItemDto newCartItemDto = new CartItemDto();
-            newCartItemDto.setId(cartId+productId);
-            newCartItemDto.setProductId(productId);
-            newCartItemDto.setQuantity(1);
-
-            CartDto newCartDto = new CartDto(cartId);
-            newCartDto.addCartItem(newCartItemDto);
-            createCart(newCartDto);
-            return;
+        Integer lastIdCart = getLastIdCart();
+        if(lastIdCart != null){
+            cart = read(Long.valueOf(lastIdCart));
+        }else{
+            lastIdCart = 1;
         }
 
         Map<String, Object> cartItemsParams = new HashMap<String, Object>();
 
-        if(cart.getItemByProductId(productId) == null) {
-            query = "INSERT INTO C_ITEM (ID, PRODUCT_ID, CART_ID, QUANTITY) VALUES (:id, :productId, :cartId, :quantity)";
-            cartItemsParams.put("id", cartId+productId);
-            cartItemsParams.put("quantity", 1);
-        } else {
-            query = "UPDATE C_ITEM SET QUANTITY = :quantity WHERE CART_ID = :cartId AND PRODUCT_ID = :productId";
-            CartItem existingItem = cart.getItemByProductId(productId);
-            cartItemsParams.put("id", existingItem.getId());
-            cartItemsParams.put("quantity", existingItem.getQuantity()+1);
+        if(cart == null) {
+
+            String queryInsertC = "INSERT INTO C";
+            Map<String, Object> paramsInsertC = new HashMap<String, Object>();
+            paramsInsertC.put("id", lastIdCart);
+            jdbcTempleate.update(queryInsertC, paramsInsertC);
+
+            cart = read(Long.valueOf(lastIdCart));
         }
 
-        cartItemsParams.put("productId", productId);
-        cartItemsParams.put("cartId", cartId);
+            if(cart.getItemByProductId(productId) == null) {
+                query = "INSERT INTO C_ITEM (PRODUCT_ID, CART_ID, QUANTITY) VALUES (:productId, :cartId, :quantity)";
+                cartItemsParams.put("productId", productId);
+                cartItemsParams.put("cartId", lastIdCart);
+                cartItemsParams.put("quantity", 1);
+            } else {
+                query = "UPDATE C_ITEM SET QUANTITY = :quantity WHERE CART_ID = :cartId AND PRODUCT_ID = :productId";
+                CartItem existingItem = cart.getItemByProductId(productId);
+                cartItemsParams.put("id", existingItem.getId());
+                cartItemsParams.put("quantity", existingItem.getQuantity()+1);
+            }
 
         jdbcTempleate.update(query, cartItemsParams);
     }

@@ -52,7 +52,7 @@ public class CartRestController {
     @RequestMapping(value = "/add/{productId}", method = RequestMethod.PUT)
     @ResponseStatus(value = HttpStatus.OK)
     public void addItem(@PathVariable String productId, HttpSession session) {
-        cartService.addItem(Long.valueOf(session.getId()),Long.valueOf(productId));
+        cartService.addItem(Long.valueOf(productId));
     }
 
     @RequestMapping(value = "/remove/{productId}", method = RequestMethod.PUT)

@@ -16,7 +16,7 @@ public interface ICartService {
 
     void delete(Long id);
 
-    void addItem(Long cartId, Long productId);
+    void addItem(Long productId);
 
     void removeItem(Long cartId, Long productId);
 }

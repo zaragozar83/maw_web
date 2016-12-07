@@ -37,8 +37,8 @@ public class CartServiceImpl implements ICartService {
     }
 
     @Override
-    public void addItem(Long cartId, Long productId) {
-        cartRepository.addItem(cartId, productId);
+    public void addItem(Long productId) {
+        cartRepository.addItem(productId);
     }
 
     @Override

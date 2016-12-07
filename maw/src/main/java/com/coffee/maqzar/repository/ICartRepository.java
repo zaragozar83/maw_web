@@ -10,8 +10,9 @@ public interface ICartRepository {
 
     void createCart(CartDto cartDto);
     Cart read(Long id);
+    int getLastIdCart();
     void update (Long id, CartDto cartDto);
     void delete(Long id);
-    void addItem(Long cartId, Long productId);
+    void addItem(Long productId);
     void removeItem(Long cartId, Long productId);
 }
