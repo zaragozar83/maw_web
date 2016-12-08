@@ -96,9 +96,8 @@ public class CartRepositoryImpl implements ICartRepository {
 
     }
 
-    @Override
-    public int getLastIdCart(){
-        int lastId = 1;
+    private Integer getLastIdCart(){
+        Integer lastId = null;
 
         Map<String, Object> params = new HashMap<String, Object>();
 
@@ -111,7 +110,7 @@ public class CartRepositoryImpl implements ICartRepository {
     }
 
     @Override
-    public void addItem(Long productId) {
+    public Integer addItem(Long productId) {
 
         String query=null;
         Cart cart = null;
@@ -127,7 +126,7 @@ public class CartRepositoryImpl implements ICartRepository {
 
         if(cart == null) {
 
-            String queryInsertC = "INSERT INTO C";
+            String queryInsertC = "INSERT INTO C (ID) VALUES (:id)";
             Map<String, Object> paramsInsertC = new HashMap<String, Object>();
             paramsInsertC.put("id", lastIdCart);
             jdbcTempleate.update(queryInsertC, paramsInsertC);
@@ -148,6 +147,8 @@ public class CartRepositoryImpl implements ICartRepository {
             }
 
         jdbcTempleate.update(query, cartItemsParams);
+
+        return lastIdCart;
     }
 
     @Override
